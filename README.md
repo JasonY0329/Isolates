@@ -10,7 +10,7 @@ Complex Computations: Calculations requiring significant CPU resources, like fin
 ![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank.png)
 
 
-##How Isolates Work and Communication Mechanisms
+## How Isolates Work and Communication Mechanisms
 
 
 Dart's isolates are an implementation of the Actor model. They can only communicate with each other by message passing, which is done with Port objects. When messages are "passed" between each other, they are generally copied from the sending isolate to the receiving isolate. This means that any value passed to an isolate, even if mutated on that isolate, doesn't change the value on the original isolate.
