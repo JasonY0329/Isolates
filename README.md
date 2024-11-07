@@ -21,11 +21,6 @@ When isolates need to communicate, they do so by sending messages. These message
 ### Special Cases with Isolate Exit:
 An exception to the standard message copying rule occurs when an isolate sends a message using the Isolate.exit() method. In this case, ownership of the message is transferred, allowing the receiving isolate to access it directly as the sending isolate ceases to exist. This approach ensures that only one isolate has access to the message at any time.
 
-### Low-Level Primitives for Message Passing:
-
-	•	SendPort.send(): Used to send a copy of a message from one isolate to another.
-	•	Isolate.exit(): Transfers message ownership, allowing efficient communication when the sending isolate exits.
-
 ### Short-Lived Isolates:
 Dart offers the Isolate.run() method as a simple way to execute short-lived tasks in a separate isolate. This method spawns a new isolate, runs a provided callback function, returns the result to the main isolate, and then shuts down. This process runs concurrently, preventing the main UI thread from becoming blocked.
 
