@@ -50,8 +50,8 @@ In Dart, isolates are an implementation of the Actor model, providing concurrent
 ### Message Passing Mechanism:
 When isolates need to communicate, they do so by sending messages. These messages are typically copied from the sending isolate to the receiving isolate to maintain isolation. This ensures that any data passed to an isolate remains unaffected by modifications in the originating isolate. Immutable objects, such as String or unmodifiable byte arrays, are an exception to this rule. They are passed by reference, which enhances performance without compromising the actor model’s behavior since immutable objects cannot be altered.
 
-### Special Cases with Isolate Exit:
-An exception to the standard message copying rule occurs when an isolate sends a message using the Isolate.exit() method. In this case, ownership of the message is transferred, allowing the receiving isolate to access it directly as the sending isolate ceases to exist. This approach ensures that only one isolate has access to the message at any time.
+### Communication with Ports:
+ReceivePort acts as the receiving channel for messages, similar to a listener, while SendPort functions like a sender. This setup resembles a stream where ReceivePort listens for incoming data and triggers a callback when a message is received. This structured message-passing ensures controlled and safe communication between isolates.
 
 ### Short-Lived Isolates:
 Dart offers the Isolate.run() method as a simple way to execute short-lived tasks in a separate isolate. This method spawns a new isolate, runs a provided callback function, returns the result to the main isolate, and then shuts down. This process runs concurrently, preventing the main UI thread from becoming blocked.
@@ -107,6 +107,3 @@ void main() async {
   });
 }
 ```
-
-### Communication with Ports:
-ReceivePort acts as the receiving channel for messages, similar to a listener, while SendPort functions like a sender. This setup resembles a stream where ReceivePort listens for incoming data and triggers a callback when a message is received. This structured message-passing ensures controlled and safe communication between isolates.
