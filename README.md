@@ -25,12 +25,19 @@ An exception to the standard message copying rule occurs when an isolate sends a
 Dart offers the Isolate.run() method as a simple way to execute short-lived tasks in a separate isolate. This method spawns a new isolate, runs a provided callback function, returns the result to the main isolate, and then shuts down. This process runs concurrently, preventing the main UI thread from becoming blocked.
 
 ```dart
-Future<List<Map<String, dynamic>>> parseJsonInIsolate(String filePath) async {
-  final String jsonString = await File(filePath).readAsString();
+Future<int> calculateSumInIsolate() async {
   return await Isolate.run(() {
-    final List<dynamic> jsonData = jsonDecode(jsonString);
-    return jsonData.cast<Map<String, dynamic>>();
+    int sum = 0;
+    for (int i = 0; i < 1000000; i++) {
+      sum += i;
+    }
+    return sum;
   });
+}
+
+void main() async {
+  int result = await calculateSumInIsolate();
+  print('Sum from short-lived isolate: $result');
 }
 ```
 
@@ -40,12 +47,30 @@ For tasks that require continuous or repeated communication over time, Dart prov
 ```dart
 void longRunningTask(SendPort sendPort) {
   ReceivePort receivePort = ReceivePort();
-  sendPort.send(receivePort.sendPort);
+  sendPort.send(receivePort.sendPort); // Send the port back to the main isolate
+
   receivePort.listen((message) {
     if (message == 'START') {
       int sum = 0;
-      for (int i = 0; i < 1000000; i++) sum += i;
-      sendPort.send('Sum is: $sum');
+      for (int i = 0; i < 1000000; i++) {
+        sum += i;
+      }
+      sendPort.send('Sum from long-lived isolate: $sum');
+      receivePort.close(); // Close after sending result
+    }
+  });
+}
+
+void main() async {
+  ReceivePort mainReceivePort = ReceivePort(); // Main isolate's receive port
+  await Isolate.spawn(longRunningTask, mainReceivePort.sendPort);
+
+  mainReceivePort.listen((message) {
+    if (message is SendPort) {
+      message.send('START'); // Start the computation in the spawned isolate
+    } else {
+      print(message); // Print the result
+      mainReceivePort.close(); // Close after receiving the result
     }
   });
 }
