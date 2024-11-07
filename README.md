@@ -13,7 +13,6 @@ Complex Computations: Calculations requiring significant CPU resources, like fin
 
 ## Message Passing and Communication Between Isolates
 
-### Introduction to Isolates:
 In Dart, isolates are an implementation of the Actor model, providing concurrent execution by running code in separate memory spaces. Unlike traditional threads, isolates do not share state or memory with each other, ensuring data safety and preventing race conditions. The primary method for communication between isolates is through message passing using Port objects, specifically SendPort and ReceivePort.
 
 ### Message Passing Mechanism:
