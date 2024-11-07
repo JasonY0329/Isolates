@@ -10,6 +10,7 @@ Complex Computations: Calculations requiring significant CPU resources, like fin
 ![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank.png)
 
 
+
 ## Message Passing and Communication Between Isolates
 
 ### Introduction to Isolates:
