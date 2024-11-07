@@ -9,7 +9,6 @@
 1. Each isolate has its own memory and its own event loop.
 2. The event loop processes events in the order that they're added to an event queue.
 3. On the main isolate, these events can be anything from handling a user tapping in the UI, to executing a function, to painting a frame on the screen.
-![image](<img width="562" alt="Screenshot 2024-11-07 at 3 29 52 PM" src="https://github.com/user-attachments/assets/a06fabdb-f011-464d-ab2f-84dc030b0f30">)
 
 
 ## When and why to use isolats in flutter
