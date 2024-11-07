@@ -20,6 +20,7 @@ However, when the main isolate is busy handling a heavy or time-consuming task, 
 1.Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
 
 2.Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
+
 3.Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
 
 ## Virtual explanation of UI jank:
