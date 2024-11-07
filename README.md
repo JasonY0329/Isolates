@@ -15,6 +15,7 @@ However, when the main isolate is busy handling a heavy or time-consuming task, 
 ### UI Jank Due to Long Task on Main Isolate:
 This chart shows the Frame Gap between expected and actual frame times. 
 ![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank%20Due%20to%20Long%20Task%20on%20Main%20Isolate.png)
+
 The solid line represents the expected frame times (ideal rendering at 16ms intervals). 
 The dashed line represents actual frame times when a heavy task is blocking the main isolate.
 The gray-shaded area highlights the frame gap, which causes visible lag.
