@@ -24,6 +24,16 @@ An exception to the standard message copying rule occurs when an isolate sends a
 ### Short-Lived Isolates:
 Dart offers the Isolate.run() method as a simple way to execute short-lived tasks in a separate isolate. This method spawns a new isolate, runs a provided callback function, returns the result to the main isolate, and then shuts down. This process runs concurrently, preventing the main UI thread from becoming blocked.
 
+```dart
+Future<List<Map<String, dynamic>>> parseJsonInIsolate(String filePath) async {
+  final String jsonString = await File(filePath).readAsString();
+  return await Isolate.run(() {
+    final List<dynamic> jsonData = jsonDecode(jsonString);
+    return jsonData.cast<Map<String, dynamic>>();
+  });
+}
+```
+
 ### Long-Lived Isolates:
 For tasks that require continuous or repeated communication over time, Dart provides Isolate.spawn() along with ReceivePort and SendPort to facilitate long-term communication. These longer-lived isolates act as background workers and are useful for applications needing consistent interaction, such as data processing, parsing, or other CPU-intensive operations.
 
