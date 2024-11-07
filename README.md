@@ -1,4 +1,16 @@
 # Isolates
+Part 1:
+How dart runs:
+1. Flutter apps do all of their work on a single isolate – the main isolate.
+2. All Dart code runs in isolates, which are similar to threads, but differ in that isolates have their own isolated memory.
+3. Isolates do not share state in any way, and can only communicate by messaging.
+4. In most cases, this model allows for simpler programming and is fast enough that the application's UI doesn't become unresponsive.
+
+How isolate works:
+1. Each isolate has its own memory and its own event loop.
+2. The event loop processes events in the order that they're added to an event queue.
+3. On the main isolate, these events can be anything from handling a user tapping in the UI, to executing a function, to painting a frame on the screen.
+
 
 ## When and why to use isolats in flutter
 ## UI Jank:
