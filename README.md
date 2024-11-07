@@ -7,3 +7,4 @@ Common Use Cases for Isolates:
 Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
 Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
 Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
+https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank.png
