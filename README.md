@@ -37,5 +37,19 @@ Future<List<Map<String, dynamic>>> parseJsonInIsolate(String filePath) async {
 ### Long-Lived Isolates:
 For tasks that require continuous or repeated communication over time, Dart provides Isolate.spawn() along with ReceivePort and SendPort to facilitate long-term communication. These longer-lived isolates act as background workers and are useful for applications needing consistent interaction, such as data processing, parsing, or other CPU-intensive operations.
 
+```dart
+void longRunningTask(SendPort sendPort) {
+  ReceivePort receivePort = ReceivePort();
+  sendPort.send(receivePort.sendPort);
+  receivePort.listen((message) {
+    if (message == 'START') {
+      int sum = 0;
+      for (int i = 0; i < 1000000; i++) sum += i;
+      sendPort.send('Sum is: $sum');
+    }
+  });
+}
+```
+
 ### Communication with Ports:
 ReceivePort acts as the receiving channel for messages, similar to a listener, while SendPort functions like a sender. This setup resembles a stream where ReceivePort listens for incoming data and triggers a callback when a message is received. This structured message-passing ensures controlled and safe communication between isolates.
