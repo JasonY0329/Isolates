@@ -19,6 +19,7 @@ However, when the main isolate is busy handling a heavy or time-consuming task, 
 ### Common Use Cases for Isolates:
 1.Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
 2.Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
+
 3.Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
 
 ## Virtual explanation of UI jank:
@@ -28,12 +29,15 @@ This chart shows the Frame Gap between expected and actual frame times.
 ![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank%20Due%20to%20Long%20Task%20on%20Main%20Isolate.png)
 
 The solid line represents the expected frame times (ideal rendering at 16ms intervals).
+
 The dashed line represents actual frame times when a heavy task is blocking the main isolate.
+
 The gray-shaded area highlights the frame gap, which causes visible lag.
 ### Expected vs. Actual Frame Time Gap
 This chart further emphasizes the concept of frame delay.
 ![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/Expected%20vs.%20Actual%20Frame%20Time%20Gap.png)
 The red-shaded area represents a significant delay caused by the heavy task.
+
 This delay results in a janky user experience.
 
 ### Why Use Isolates for Heavy Tasks?
