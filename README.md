@@ -1,13 +1,33 @@
 # Isolates
-Part 2:
-UI Jank:
-Define UI jank as the lag that occurs when the main isolate is overloaded and can’t render at a consistent frame rate. In Flutter, the goal is to render at 60 fps, meaning each frame should ideally take no more than 16ms.
-When a heavy task exceeds this limit, it delays rendering, resulting in visible lag or frame drops.
-Common Use Cases for Isolates:
-Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
-Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
-Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
-![image](https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank.png)
+
+## When and why to use isolats in flutter
+## UI Jank:
+UI jank refers to the lag or stutter in the user interface that occurs when the main isolate—the thread that handles UI rendering—becomes overloaded. In Flutter, the goal is to maintain a smooth, responsive experience by rendering at 60 frames per second (fps). Each frame should ideally take no more than 16 milliseconds.
+
+However, when the main isolate is busy handling a heavy or time-consuming task, like processing large data files or applying complex image filters, it struggles to render each frame within that 16-millisecond window. As a result, it falls behind on rendering frames, and users experience this delay as lag or choppiness in the interface.
+## Common Use Cases for Isolates:
+1.Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
+2.Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
+3.Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
+
+## Virtual explanation of UI jank:
+
+### UI Jank Due to Long Task on Main Isolate:
+This chart shows the Frame Gap between expected and actual frame times. 
+![image] (https://github.com/JasonY0329/Isolates/blob/main/graphs/UI%20Jank%20Due%20to%20Long%20Task%20on%20Main%20Isolate.png)
+The solid line represents the expected frame times (ideal rendering at 16ms intervals). 
+The dashed line represents actual frame times when a heavy task is blocking the main isolate.
+The gray-shaded area highlights the frame gap, which causes visible lag.
+### Expected vs. Actual Frame Time Gap
+This chart further emphasizes the concept of frame delay.
+![image] (https://github.com/JasonY0329/Isolates/blob/main/graphs/Expected%20vs.%20Actual%20Frame%20Time%20Gap.png)
+The red-shaded area represents a significant delay caused by the heavy task.
+This delay results in a janky user experience.
+
+## Why Use Isolates for Heavy Tasks?
+
+By using isolates to handle CPU-intensive tasks, the main isolate can focus on rendering the UI smoothly and responding to user interactions in real-time. Isolates help prevent frame gaps, ensuring a smooth, responsive app experience.
+
 
 
 
