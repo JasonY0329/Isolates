@@ -37,7 +37,7 @@ This chart further emphasizes the concept of frame delay.
 The red-shaded area represents a significant delay caused by the heavy task.
 This delay results in a janky user experience.
 
-## Why Use Isolates for Heavy Tasks?
+### Why Use Isolates for Heavy Tasks?
 
 By using isolates to handle CPU-intensive tasks, the main isolate can focus on rendering the UI smoothly and responding to user interactions in real-time. Isolates help prevent frame gaps, ensuring a smooth, responsive app experience.
 
