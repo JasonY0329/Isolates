@@ -17,10 +17,9 @@ UI jank refers to the lag or stutter in the user interface that occurs when the 
 
 However, when the main isolate is busy handling a heavy or time-consuming task, like processing large data files or applying complex image filters, it struggles to render each frame within that 16-millisecond window. As a result, it falls behind on rendering frames, and users experience this delay as lag or choppiness in the interface.
 ### Common Use Cases for Isolates:
-1.Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
-2.Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
-3.Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
-
+1. Data Processing: Large data files, such as JSON, are best parsed in an isolate to avoid blocking the main isolate.
+2. Image and Media Processing: Tasks like applying filters or resizing images are computationally expensive, so moving them to an isolate ensures the UI remains responsive.
+3. Complex Computations: Calculations requiring significant CPU resources, like financial models or scientific computations, are good candidates for isolates.
 ## Virtual explanation of UI jank:
 
 ### UI Jank Due to Long Task on Main Isolate:
