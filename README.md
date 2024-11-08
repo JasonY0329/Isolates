@@ -38,7 +38,7 @@ Async task complete
 4. Scalability for High-Performance Apps.
 
 
-## When and why to use isolats in flutter
+## When and why to use isolates in flutter
 ### UI Jank:
 UI jank refers to the lag or stutter in the user interface that occurs when the main isolate—the thread that handles UI rendering—becomes overloaded. In Flutter, the goal is to maintain a smooth, responsive experience by rendering at 60 frames per second (fps). Each frame should ideally take no more than 16 milliseconds.
 
