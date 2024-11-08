@@ -10,6 +10,25 @@
 2. The event loop processes events in the order that they're added to an event queue.
 3. On the main isolate, these events can be anything from handling a user tapping in the UI, to executing a function, to painting a frame on the screen.
 
+## Key Steps of the Flutter Event Loop:
+1. Synchronous Task Execution.
+2. Handling Asynchronous Tasks with the Task Queue.
+3. Rendering a New Frame.
+
+For example:
+1.
+print("Start");
+Future.delayed(Duration(seconds: 2), () {
+  print("Async task complete");
+});
+print("End");
+
+2.
+Start
+End
+Async task complete
+
+
 
 ## When and why to use isolats in flutter
 ### UI Jank:
