@@ -31,6 +31,11 @@ End
 
 Async task complete
 
+## Why use multiple isolates:
+1. Avoid Blocking the Main Thread.
+2. True Parallelism.
+3. Optimizing Background Tasks.
+4. Scalability for High-Performance Apps.
 
 
 ## When and why to use isolats in flutter
