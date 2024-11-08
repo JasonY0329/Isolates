@@ -17,15 +17,18 @@
 
 For example:
 1.
+```dart
 print("Start");
 Future.delayed(Duration(seconds: 2), () {
   print("Async task complete");
 });
 print("End");
-
+```
 2.
 Start
+
 End
+
 Async task complete
 
 
